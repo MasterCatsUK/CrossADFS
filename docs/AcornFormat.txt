@@ -1,0 +1,33 @@
+AcornFormat 0.9.1
+
+OPEN THE APP
+On your system disk open Tools and double-click AcornFormat. The title
+shows the selected format. Choose a new disk name using 1-10 valid ADFS
+characters. The yellow arrow opens the format list: Current format, ADFS
+1.6M (F), ADFS 800K (E), ADFS 800K (D), and ADFS 640K (L).
+
+Current format checks the inserted disk when you enter that menu item.
+Leaving and returning checks again. Installed/running CrossMAC and CrossDOS
+handlers can supply additional Mac/PC recognition for information only;
+this adds no formatting support for those systems. Mac 1.44MB is included.
+
+WORKBENCH FORMAT DISK
+Select an Acorn disk icon and choose Format Disk. It opens AcornFormat in
+current-format mode, without a format selector. The detected ADFS format
+appears in the title. Reopen this window after changing the inserted disk.
+
+BUTTONS
+Format: writes all 160 tracks, then verifies all 160 in a separate pass.
+Quick Format: requires a readable ADFS disk already in the selected format;
+writes and verifies metadata tracks only (one for L/D/E, three for F).
+Verify: reads all 160 tracks without writing.
+Cancel: stops between disk operations; a stopped format can be incomplete.
+
+Formatting erases the directory contents. Use Full Format to change formats
+or prepare blank media; Quick Format does not scan or repair the whole disk.
+The progress bar stays in the main window: red writing, dark-green verifying.
+Wait for completion and drive release before ejecting. Check a new format
+and copied files on the Acorn before relying on the result.
+
+F needs an Amiga HD drive and HD disk; L/D/E need DD media. No F+ support.
+Failure details: RAM:AcornFormatReport.txt. Keep it before restarting.
