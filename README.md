@@ -4,7 +4,7 @@
 
 Read and write Acorn ADFS floppy disks from Workbench, and format or verify them with **AcornFormat**. Developed as CrossAcorn; the filesystem is **CrossADFSFileSystem** and mounts the internal drive as **ADFS0:**.
 
-**[Download the installer](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.23)** · [Installation](docs/INSTALL.md) · [AcornFormat guide](docs/AcornFormat.txt) · [Compatibility and testing](docs/COMPATIBILITY.md)
+**[Download the installer](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.23)** · [Installation](docs/INSTALL.md) · [AcornFormat guide](docs/AcornFormat.txt) · [Compatibility and testing](docs/COMPATIBILITY.md) · [Credits and sources](CREDITS.md)
 
 This is the first public **test release**: CrossADFSFileSystem **0.9.23**, with AcornFormat **0.9.1**. Download **CrossAcorn-Setup-0.9.23.zip** from Releases, extract the complete drawer, and double-click **Install**. GitHub's green Code download contains this project page and documentation, rather than the installer.
 
@@ -60,3 +60,10 @@ These are presentation edits of supplied Coffin OS captures, with the blue deskt
 If formatting fails, keep **RAM:AcornFormatReport.txt** before restarting. [Open an issue](https://github.com/MasterCatsUK/CrossADFS/issues) with the Workbench/Kickstart versions, CPU, drive/media type, selected ADFS format, steps to reproduce and report text. Do not include personal files or whole disks unless you intend to share their contents.
 
 The runtime installer excludes development tests, logs, generated software previews and disk captures. This repository provides the public downloads, documentation and images; source code is not included in this release.
+
+## Acknowledgements
+
+CrossADFS draws on Acorn documentation and earlier community work, including
+Russell King's Linux ADFS algorithms, Jason Tribbeck's LongFiles, and the
+Amiga interface/icon references. See [credits, references and provenance](CREDITS.md)
+for the recorded sources and the outstanding provenance/licence review.
