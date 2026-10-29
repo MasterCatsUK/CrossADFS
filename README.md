@@ -4,6 +4,10 @@
 
 Read and write Acorn ADFS floppy disks from Workbench, and format or verify them with **AcornFormat**. Developed as CrossAcorn; the filesystem is **CrossADFSFileSystem** and mounts the internal drive as **ADFS0:**.
 
+CrossADFS is my personal project, which I decided to share with the community. I'm Andrew (MasterCatsUK); I direct the project and carry out the physical testing on my Amiga and Acorn A3010.
+
+**AI-assisted development:** I've had substantial help from OpenAI's ChatGPT/Codex with research, code generation, debugging, automated testing and documentation. See [development credits and sources](CREDITS.md).
+
 **[Download the installer](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.23)** · [Installation](docs/INSTALL.md) · [AcornFormat guide](docs/AcornFormat.txt) · [Compatibility and testing](docs/COMPATIBILITY.md) · [Credits and sources](CREDITS.md)
 
 This is the first public **test release**: CrossADFSFileSystem **0.9.23**, with AcornFormat **0.9.1**. Download **CrossAcorn-Setup-0.9.23.zip** from Releases, extract the complete drawer, and double-click **Install**. GitHub's green Code download contains this project page and documentation, rather than the installer.

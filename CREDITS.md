@@ -8,6 +8,22 @@ This list distinguishes format documentation, implementation references,
 compatibility research, linked runtime components and development tools.
 Acknowledgement does not imply an author's endorsement.
 
+## Project direction and AI assistance
+
+CrossADFS is Andrew's personal project, which he decided to share with the
+community.
+
+**Andrew / MasterCatsUK** directs the project, chooses its features, supplies
+test material and feedback, and carries out physical testing on the Amiga
+and Acorn A3010.
+
+**OpenAI's ChatGPT/Codex** has provided substantial AI assistance with
+research, implementation and code generation, debugging, automated tests,
+documentation and release preparation. This is an AI-assisted development
+project. The original authors of referenced or reused work remain credited
+below; AI assistance does not replace those acknowledgements or resolve the
+outstanding provenance/licence review.
+
 ## ADFS and FileCore
 
 - **Acorn Computers and the authors of the RISC OS Programmer's Reference
