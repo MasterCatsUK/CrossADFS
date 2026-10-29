@@ -1,0 +1,71 @@
+CrossADFS 0.9.25 - automatic Acorn metadata round trips
+PUBLIC TEST RELEASE - expanded filetype recognition needs physical verification.
+The user reported the 0.9.24 metadata round trip working on their setup.
+
+HOW IT WORKS
+Copy files and drawers using Workbench as usual. CrossADFS exposes their
+Acorn metadata as a standard Amiga file comment. A copy that preserves
+comments carries the metadata onto the Amiga disk. When that comment is
+copied back onto ADFS0:, CrossADFS restores the original catalogue values.
+No background watcher, separate copy app, or companion .inf file is needed.
+
+The record starts with CrossADFS1. It contains the exact Acorn load and
+execute fields, the original length, and the raw catalogue attribute byte.
+This retains the Acorn filetype and full timestamp where those fields
+encode them, or real load/execute addresses for untyped files. Both files
+and drawers are supported. This is catalogue preservation, not a promise
+to preserve every extension used by other software.
+
+WHERE TO COPY
+Use an Amiga disk/filesystem that supports comments. Keep the CrossADFS1
+comment intact: changing or deleting it loses the extra Acorn metadata.
+It is visible in Workbench Information, not stored in an icon .info file.
+The filesystem's usual filetype inference is used if no record returns.
+CrossADFS cannot recover a comment discarded by another tool/filesystem.
+
+The Mac/emulator shared folder, FAT/PC disks, archives, mail and other
+transfer paths may discard Amiga comments. Do not assume they preserve
+metadata. Shell COPY needs its CLONE/COM options; ordinary COPY may omit
+comments. A third-party Workbench replacement must preserve comments too.
+
+LIMITS
+The record is for round trips of files whose length has not changed.
+An altered length or invalid record is refused when restoring the comment;
+the file's data is not erased by that refusal. A changed file can have a
+stale record even if it has the same length; do not use this as proof that
+file contents are unchanged. Native Amiga comment editing overwrites the
+carrier, so reserve that field for the record while transferring files.
+
+The format of the destination must represent the attributes. In particular
+ADFS L cannot represent all F/D/E catalogue bits; unsupported records are
+refused rather than silently losing those bits. Allocation addresses,
+file sizes and file/directory kinds are never taken from the comment.
+Generated RAM icons retain their existing behaviour and are not the carrier.
+
+FIRST HARDWARE TEST
+1. Install this test kit and restart once to load the new handler.
+2. On the A3010, note the type/date/access of a short text file and a drawer
+   containing files. Use expendable test media and retain the originals.
+3. On the Amiga, drag those objects from the Acorn disk to a native Amiga
+   hard disk or RAM:. In Information check that their comments start with
+   CrossADFS1. Do not edit those comments or the copied files.
+4. Create a new folder called Back on the Acorn disk. Drag the copies from
+   the Amiga disk into Back using normal Workbench drag-and-drop.
+5. Put the disk in the A3010. Compare the originals with the copies inside
+   Back: file bytes, length, filetype/date/access, and the nested files.
+6. Report the Workbench version, destination filesystem and whether both
+   comments and Acorn metadata survived. If Workbench reports an error,
+   retain the disk and save CrossAcornStatus to a file on the Amiga drive.
+
+VALIDATION SO FAR
+The production handler has passed emulated 68020/68040 metadata packet tests
+on L, D, E and F, with raw read/write/verify operations modelled on copied
+images. Tests cover typed/untyped fields, exact timestamps/attributes,
+all six orders of comment/date/protection copying, empty/large files,
+nested drawers, malformed records and protected/busy media. Separate tests
+check the record encoding and real OFS/FFS image comment persistence.
+These are not a full Workbench boot or a physical floppy copy test.
+
+SOURCE AND LICENCES
+See CREDITS.txt for the retained references and outstanding provenance and
+licence review. This public test release does not complete that review.

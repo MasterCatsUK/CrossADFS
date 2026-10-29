@@ -8,9 +8,19 @@ CrossADFS is my personal project, which I decided to share with the community. I
 
 **AI-assisted development:** I've had substantial help from OpenAI's ChatGPT/Codex with research, code generation, debugging, automated testing and documentation. See [development credits and sources](CREDITS.md).
 
-**[Download the installer](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.23)** · [Installation](docs/INSTALL.md) · [AcornFormat guide](docs/AcornFormat.txt) · [Compatibility and testing](docs/COMPATIBILITY.md) · [Credits and sources](CREDITS.md)
+**[Download the installer](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.25)** · [Installation](docs/INSTALL.md) · [AcornFormat guide](docs/AcornFormat.txt) · [Metadata copying](docs/METADATA.txt) · [Filetypes](docs/FILETYPES.txt) · [Compatibility and testing](docs/COMPATIBILITY.md) · [Credits and sources](CREDITS.md)
 
-This is the first public **test release**: CrossADFSFileSystem **0.9.23**, with AcornFormat **0.9.1**. Download **CrossAcorn-Setup-0.9.23.zip** from Releases, extract the complete drawer, and double-click **Install**. GitHub's green Code download contains this project page and documentation, rather than the installer.
+The latest public **test release** is CrossADFSFileSystem **0.9.25**, with AcornFormat **0.9.1**. Download **CrossAcorn-Setup-0.9.25.zip** from Releases, extract the complete drawer, and double-click **Install**. GitHub's green Code download contains this project page and documentation, rather than the installer.
+
+## New in 0.9.25
+
+- Acorn metadata can survive ordinary Workbench copies and return trips through an Amiga file comment. This carries the original load/execute fields, filetype, full Acorn timestamp and catalogue attributes for files and drawers. No separate `.inf` file or copy application is required.
+- Expanded new-file associations cover pictures, documents, music and archives, including IFF/ILBM, ProTracker modules, MP3, RTF, SVG, TAR/GZip/BZip2 and Office/OpenDocument formats.
+- Streaming checks distinguish IFF pictures from other IFF containers, identify common ProTracker headers, and distinguish CRLF-only plain text without changing its bytes. They add no floppy reads; emulated copy-flow read/write/erase counts match 0.9.24.
+
+Metadata preservation requires a destination and copy tool that retain Amiga file comments. Keep the comment and file intact: changed-length files cannot restore the old record, and ADFS L cannot represent every F/D/E attribute bit. Host shared folders, PC/FAT disks and archives may discard comments. This is catalogue preservation, not a guarantee for every application's extended metadata. See the [metadata guide and round-trip test](docs/METADATA.txt).
+
+Filetype associations do not convert file contents or supply an Acorn viewer/player. Unknown IFF subtypes remain Data; `.img` disk images are not blindly assigned a picture type. Existing metadata carried back in the comment takes precedence over new-file defaults. See the [full mapping and limits](docs/FILETYPES.txt).
 
 ## What it does
 
@@ -36,7 +46,7 @@ F+ is not supported. Mac and PC formatting are not included.
 
 Classic Amiga, **68020 or later**, internal **DF0:**, and **Kickstart/Workbench 3.1 or later**. Uses integer code; no FPU is required. No ReAction, chooser.gadget, MUI or Coffin OS dependency.
 
-Physical disk testing has been reported on **Workbench 3.2.1** with copied files and disk verification checked on an **Acorn A3010**. For 3.1 compatibility, the source/API audit and **40 automated m68k test runs** passed on 68020/68040 emulation. **A full stock Workbench 3.1 boot has not been tested.** Later Workbench releases have not each been independently boot-tested. See the [testing details](docs/COMPATIBILITY.md).
+Physical disk testing has been reported on **Workbench 3.2.1** with copied files and disk verification checked on an **Acorn A3010**. The owner also reported the **0.9.24 metadata round trip working** on that setup. For 0.9.25, **62 automated m68k runs with 65,140 assertions** passed across 68020/68040 and L/D/E/F; source/API checks prohibit post-V40 calls. The expanded filetype checks still need physical hardware feedback. **A full stock Workbench 3.1 boot has not been tested.** Later Workbench releases have not each been independently boot-tested. See the [testing details](docs/COMPATIBILITY.md).
 
 Workbench 3.1 uses the included standard four-colour icon fallback. Newer icon libraries can use the colour image; screen palette and theme affect its appearance.
 

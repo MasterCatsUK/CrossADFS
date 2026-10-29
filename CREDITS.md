@@ -76,6 +76,15 @@ raised a question about the project.
   historical LongFiles materials used during compatibility research.
   [Arcarc](https://arcarc.nl/) and [APDL library](https://www.riscos.com/apdl/pd_library/main.htm).
 
+## Filetype associations and format recognition
+
+- **Acorn PRM authors, RISC OS Products Directory maintainers and RISC OS Internet/MimeMap maintainers** — published filetype numbers, foreign extension associations and modern document/archive mappings. References: [PRM filetypes](https://www.riscos.com/support/developers/prm/filetypes.html), [historical directory](https://www.riscos.com/the_archive/rol/productsdb/sw/types.htm) and [MimeMap reference](https://github.com/experimentech/RISC_OS_AWH3Dev/blob/master/RISC_OS_Dev/mixed/RiscOS/Sources/SystemRes/Internet/Resources/files/MimeMap).
+- **DigitalCD/TimPlayer author and maintainers** — tracker player/filetype associations. [TimPlayer documentation](https://www.riscos-digitalcd.net/digitalcd/modules/timplayer.htm).
+- **Jerry Morrison / Electronic Arts and Commodore-Amiga contributors** — the IFF ILBM format specification. [ILBM specification](https://wiki.amigaos.net/wiki/ILBM_IFF_Interleaved_Bitmap).
+- **Lars Hamre, Norman Lin, Kurt Kennett, Mark Cox, Peter Hanning, Steinar Midtskogen, Marc Espie and Thomas Meyer**, credited by the module format document — documented SoundTracker/NoiseTracker/ProTracker fields and signatures. [Module format reference](https://www.aes.id.au/modformat.html).
+
+These references informed the new filetype associations and bounded checks of incoming file bytes. The complete supported list and application-dependent distinctions are in [FILETYPES.txt](docs/FILETYPES.txt). They do not close the wider provenance/licence review above.
+
 ## Amiga interfaces and icon formats
 
 - **Commodore/Amiga documentation authors and the AmigaOS developer

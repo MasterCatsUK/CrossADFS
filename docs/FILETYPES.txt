@@ -1,0 +1,129 @@
+CrossADFS 0.9.25 - types for newly copied files
+
+The associations below set the Acorn catalogue type. They do not convert
+file contents or install a viewer/player. The A3010 still needs suitable
+software to open each format. All extension matching ignores letter case.
+
+Existing Acorn metadata carried in the CrossADFS1 file comment takes
+priority when restored. This list applies to new files without that
+record. Unknown names remain Data (&FFD).
+
+DOCUMENTS
+pdf                         ADF  PDF (also recognises a PDF header)
+txt text md c h s asm bas    FFF  Plain text / source
+CRLF-only plain text        FDB  Detected across the supplied text bytes
+rtf                         C32  Rich Text Format
+ps eps epi                  FF5  PostScript
+html htm                    FAF  HTML
+doc                         AE6  Older Microsoft Word DOC
+xls                         BA6  Older Microsoft Excel XLS
+csv                         DFE  CSV
+wk1                         DB0  Lotus 1-2-3
+dbf                         DB3  dBase III
+tex                         CE5  TeX
+
+PICTURES / DRAWING
+iff                         693  Requires IFF FORM ILBM or PBM picture header
+ilbm lbm ham hbr             693  Amiga IFF/ILBM image association
+jpg jpeg jfif jpe jif        C85  JPEG
+png                         B60  PNG
+gif                         695  GIF
+tif tiff                    FF0  TIFF
+bmp dib                     69C  Windows bitmap
+pcx pcc                     697  PC Paintbrush
+tga                         69D  Targa
+pbm pgm ppm pnm              69E  Netpbm
+ico                         132  Windows icon
+gem                         692  GEM image
+img                         692  Only with a suitable GEM picture header
+pi1 pi2 pi3 pc1 pc2 pc3      691  Atari Degas
+ras sun                     FC9  Sun raster
+spr sprite; !Sprites etc    FF9  RISC OS Sprite
+draw                        AFF  RISC OS Draw
+dxf                         DEA  AutoCAD DXF
+hgl hpgl plt                CAE  HPGL
+
+AUDIO / TRACKER MUSIC
+wav wave                    FB1  WaveForm
+aif aiff aifc               FC2  AIFF (also recognises IFF AIFF/AIFC)
+mid midi                    FD4  MIDI
+mp3 mp2 mp1 mpa             1AD  MPEG audio
+au snd                      BD6  AudioWorks Sun/NeXT AU association
+mod; mod.name               CB6  Legacy fallback for ambiguous modules
+ProTracker MOD signature    CC5  Recognises common signatures at byte 1080
+stmodule musx med mmd        CB6  Legacy SoundTracker/Desktop Tracker family
+xm                          1AF  FastTracker II
+it                          1AE  Impulse Tracker
+stm s3m                     1B0  ScreamTracker
+mtm 669 ult ptm              1B1  Other tracker formats supported by TimPlayer
+dsym                        10B  Digital Symphony
+
+ARCHIVES / VIDEO
+zip                         A91  Modern registered ZIP mapping retained
+lha lzh arj zoo arc spk      DDC  Legacy archive association
+avi mov qtm                 FB2  Player-dependent AVI/QuickTime association
+mpeg mpg m2v                BF8  MPEG video
+
+ADDITIONAL COMMON ASSOCIATIONS
+svg                         AAD  SVG
+xml / dtd                   F80 / F7F  XML / XML DTD
+css / js                    F79 / F81  CSS / JavaScript
+tsv / vcf                   F0D / ACF  TSV / vCard
+tar                         C46  TAR
+gz gzip tgz                 F89  GZip
+bz2                         16E  BZip2
+docx / xlsx / pptx          A7E / A7F / A80
+odt / ods / odp             A81 / A82 / A84
+
+!Boot, !Run and .obey remain FEB (Obey); .abs remains FF8 (Absolute).
+The .bas association is textual source, not tokenised BASIC.
+
+IMPORTANT DETAILS
+IFF is a container. FORM ILBM and PBM are pictures; AIFF/AIFC are audio.
+Other IFF subtypes, including 8SVX and ANIM, remain Data in this build.
+The program identifies the type, not whether a complete file is valid.
+Use .iff or .img with suitable headers; a disk image named .img is not
+automatically labelled as a GEM picture. Type detection uses only bytes
+already being copied and does not add floppy reads. Non-sequential writes
+fall back to the filename association; existing update handles retain the
+old Acorn type. CRLF detection changes the type, not the line endings.
+
+ZIP has historical DDC and modern A91 associations. This build keeps the
+existing A91 mapping from the RISC OS MimeMap; old archive applications
+may need DDC instead. Similarly, AU and tracker associations vary between
+players. Original Acorn catalogue metadata is preserved when available.
+
+.INFO ICONS
+CrossADFS-generated application icons contain ACORN_TYPE, ACORN_LOAD and
+ACORN_EXEC ToolTypes. These can be inspected using Icon Information.
+Ordinary icons may contain only a generic Project/Tool/Drawer kind and a
+Default Tool; that is not a universal content-type identifier. This build
+does not import arbitrary .info ToolTypes as catalogue metadata. File
+comments remain the automatic metadata carrier described in METADATA.txt.
+
+Ogg/FLAC and other formats without a verified association in this change
+remain Data when new. An existing type in a returned metadata record is
+still restored. None of these associations guarantee A3010 playback.
+
+REFERENCES / CREDITS
+Acorn/RISC OS PRM authors: generic, document, audio and graphics types
+https://www.riscos.com/support/developers/prm/filetypes.html
+RISC OS Products Directory maintainers: historical foreign extensions
+https://www.riscos.com/the_archive/rol/productsdb/sw/types.htm
+RISC OS Internet/MimeMap maintainers: modern filetype associations
+https://github.com/experimentech/RISC_OS_AWH3Dev/blob/master/RISC_OS_Dev/mixed/RiscOS/Sources/SystemRes/Internet/Resources/files/MimeMap
+DigitalCD/TimPlayer author: tracker player/type associations
+https://www.riscos-digitalcd.net/digitalcd/modules/timplayer.htm
+Jerry Morrison / Electronic Arts / Commodore-Amiga: IFF ILBM specification
+https://wiki.amigaos.net/wiki/ILBM_IFF_Interleaved_Bitmap
+Module format document contributors (credited on its title page):
+https://www.aes.id.au/modformat.html
+See CREDITS.txt for the wider outstanding provenance/licence review.
+
+TEST THIS BUILD
+Install and restart. Copy a new PDF, IFF/ILBM picture, tracker file and one
+of the added extensions from the Amiga hard disk onto your Acorn test
+disk. Use files without a CrossADFS1 comment for the new-file defaults.
+On the A3010 check the catalogue type and open with a suitable application.
+The metadata round trip reported working in 0.9.24 is retained; a copy
+carrying its old comment should keep its original type instead.

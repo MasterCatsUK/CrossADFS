@@ -1,6 +1,8 @@
 # Install CrossADFS and AcornFormat
 
-Download **CrossAcorn-Setup-0.9.23.zip** from [Releases](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.23) and extract the whole drawer, retaining the `.info` files. Close Acorn files and Format windows, then double-click **Install**. The native Amiga Installer handles the copy steps. Restart once afterward. Installation itself does not format a disk.
+Download **CrossAcorn-Setup-0.9.25.zip** from [Releases](https://github.com/MasterCatsUK/CrossADFS/releases/tag/v0.9.25) and extract the whole drawer, retaining the `.info` files. Close Acorn files and Format windows, then double-click **Install**. The native Amiga Installer handles the copy steps. Restart once afterward to load the updated handler. Installation itself does not format a disk.
+
+The update adds file-comment metadata round trips and expanded filetype associations. Read [METADATA.txt](METADATA.txt) before testing copies, and [FILETYPES.txt](FILETYPES.txt) for the complete mapping. Use a native Amiga disk or RAM: for the metadata test; a Mac/emulator shared folder may discard comments.
 
 The Installer utility supplied with your Amiga setup must be installed. The Install icon's Default Tool is `Installer`; if it is not on the command path, use Icon Information to select the actual installed utility. No third-party Installer binary is bundled.
 
